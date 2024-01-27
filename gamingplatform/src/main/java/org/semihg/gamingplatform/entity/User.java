@@ -30,9 +30,9 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name="user_game",
-            joinColumns = @JoinColumn(referencedColumnName = "id" ,  name="user_id"),
-            inverseJoinColumns = @JoinColumn(referencedColumnName = "id" , name = "game_id")
+            name = "user_game",
+            joinColumns = @JoinColumn(referencedColumnName = "id", name = "user_id"),
+            inverseJoinColumns = @JoinColumn(referencedColumnName = "id", name = "game_id")
     )
     private Set<Game> games = new HashSet<>();
 }

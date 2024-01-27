@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/game")
 public class GameController {
@@ -24,7 +26,9 @@ public class GameController {
 
 
     @GetMapping("/list")
-    void getGameList() {
+    public ResponseEntity<List<Game>> getGameList() {
+        List<Game> gameList = gameService.getAllGames();
+        return new ResponseEntity<>(gameList, HttpStatus.OK);
     }
 
 
@@ -57,20 +61,20 @@ public class GameController {
     }
 
     @DeleteMapping("/remove")
-    ResponseEntity<GameResponse> deleteGame(@RequestParam Long id){
+    ResponseEntity<GameResponse> deleteGame(@RequestParam Long id) {
 
         GameResponse res = gameService.deleteGame(id);
-        if(res.getGame() != null) {
+        if (res.getGame() != null) {
             return new ResponseEntity<>(res, HttpStatus.OK);
         }
         return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/add")
-    ResponseEntity<GameResponse> addGame(@RequestBody AddGameRequest req){
+    ResponseEntity<GameResponse> addGame(@RequestBody AddGameRequest req) {
 
         GameResponse res = gameService.addGame(req);
-        if(res.getGame() != null) {
+        if (res.getGame() != null) {
             return new ResponseEntity<>(res, HttpStatus.OK);
         }
         return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);

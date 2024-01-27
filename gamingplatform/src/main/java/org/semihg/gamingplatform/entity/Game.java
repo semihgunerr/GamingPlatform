@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Game {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,5 +33,5 @@ public class Game {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
-    private User users ;
+    private User users;
 }

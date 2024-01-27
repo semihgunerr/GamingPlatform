@@ -6,8 +6,9 @@ import java.time.LocalDate;
 
 @Data
 public class AddGameRequest {
-    private String genre;
+
     private String name;
+    private String genre;
     private LocalDate releaseDate;
     private String platform;
 

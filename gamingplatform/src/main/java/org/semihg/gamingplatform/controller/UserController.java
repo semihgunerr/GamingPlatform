@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -25,36 +24,38 @@ public class UserController {
     public ResponseEntity<UserResponse> createUser(@RequestBody CreateUserRequest req) {
 
         UserResponse res = userService.createUser(req);
-        if(res.getUser() != null) {
+        if (res.getUser() != null) {
             return new ResponseEntity<>(res, HttpStatus.OK);
         }
         return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
-}
+    }
+
     @GetMapping("/library")
-    ResponseEntity<GameResponse> getGameLibrary(@RequestParam Long id){
+    ResponseEntity<GameResponse> getGameLibrary(@RequestParam Long id) {
 
         GameResponse res = userService.getLibrary(id);
-        if(res.getGame() != null) {
+        if (res.getGame() != null) {
             return new ResponseEntity<>(res, HttpStatus.OK);
         }
         return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
 
 
     }
+
     @GetMapping("/profile")
-    public ResponseEntity<UserResponse>  getProfile(@RequestParam Long id){
+    public ResponseEntity<UserResponse> getProfile(@RequestParam Long id) {
 
         UserResponse res = userService.getProfile(id);
-        if(res.getUser() != null) {
+        if (res.getUser() != null) {
             return new ResponseEntity<>(res, HttpStatus.OK);
         }
         return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/remove")
-    public ResponseEntity<UserResponse> removeProfile(@RequestParam Long id){
+    public ResponseEntity<UserResponse> removeProfile(@RequestParam Long id) {
         UserResponse res = userService.removeProfile(id);
-        if(res.getUser() != null) {
+        if (res.getUser() != null) {
             return new ResponseEntity<>(res, HttpStatus.OK);
         }
         return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
@@ -62,18 +63,18 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserResponse>  login(@RequestBody LoginRequest req){
+    public ResponseEntity<UserResponse> login(@RequestBody LoginRequest req) {
 
-            UserResponse res = userService.login(req);
-            if(res.getUser() != null) {
-                return new ResponseEntity<>(res, HttpStatus.OK);
-            }
-            return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
+        UserResponse res = userService.login(req);
+        if (res.getUser() != null) {
+            return new ResponseEntity<>(res, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
 
     }
 
     @PatchMapping("/edit")
-    public ResponseEntity<UserResponse>  editProfile(@RequestBody EditProfileRequest req) {
+    public ResponseEntity<UserResponse> editProfile(@RequestBody EditProfileRequest req) {
 
 
         UserResponse res = userService.editProfile(req.getUsername(), req.getPassword(), req.getId());

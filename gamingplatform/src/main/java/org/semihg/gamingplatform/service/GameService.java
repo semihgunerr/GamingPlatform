@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -18,77 +19,74 @@ public class GameService {
 
     private final GameRepository gameRepository;
     private final UserRepository userRepository;
+
     @Autowired
     public GameService(GameRepository gameRepository, UserRepository userRepository) {
         this.gameRepository = gameRepository;
         this.userRepository = userRepository;
     }
-    public GameResponse addGame(AddGameRequest req){
-    try{
-        if(gameRepository.findByName(req.getName())!=null){
 
-            return new GameResponse("already exists",null);
+    public GameResponse addGame(AddGameRequest req) {
+        try {
+            if (gameRepository.findByName(req.getName()) != null) {
+
+                return new GameResponse("already exists", null);
+            }
+        } catch (Exception e) {
+            return new GameResponse(e.getMessage(), null);
+        }
+
+        Game newGame = new Game();
+        newGame.setName(req.getName());
+        newGame.setGenre(req.getGenre());
+        newGame.setPlatform(req.getPlatform());
+        newGame.setReleaseDate(req.getReleaseDate());
+
+        try {
+            return new GameResponse("success", Collections.singleton(gameRepository.save(newGame)));
+        } catch (Exception e) {
+            return new GameResponse(e.getMessage(), null);
         }
     }
-    catch (Exception e){
-        return new GameResponse(e.getMessage(),null);
-    }
 
-    Game newGame= new Game();
-    newGame.setName(req.getName());
-    newGame.setGenre(req.getGenre());
-    newGame.setPlatform(req.getPlatform());
-    newGame.setReleaseDate(req.getReleaseDate());
-
-    try{
-        return new GameResponse("success", Collections.singleton(gameRepository.save(newGame)));
-    }
-
-    catch (Exception e) {
-        return new GameResponse(e.getMessage(),null);
-        }
-    }
     public GameResponse deleteGame(Long id) {
-        try{
+        try {
             Optional<Game> g = gameRepository.findById(id);
-            if(g.isEmpty()){
+            if (g.isEmpty()) {
 
-                return new GameResponse("game not found",null);
+                return new GameResponse("game not found", null);
             }
             gameRepository.deleteById(id);
-            return new GameResponse("success",Collections.singleton(g.get()) );
-        }
-        catch (Exception e){
-            return new GameResponse(e.getMessage(),null);
+            return new GameResponse("success", Collections.singleton(g.get()));
+        } catch (Exception e) {
+            return new GameResponse(e.getMessage(), null);
         }
 
     }
 
     public GameResponse getGame(Long id) {
 
-        try{
+        try {
             Optional<Game> game = gameRepository.findById(id);
-            if(game.isEmpty()){
+            if (game.isEmpty()) {
 
-                return new GameResponse("not found",null);
+                return new GameResponse("not found", null);
             }
 
-                return new GameResponse("success",Collections.singleton(game.get()));
-        }
-        catch (Exception e){
-            return new GameResponse(e.getMessage(),null);
+            return new GameResponse("success", Collections.singleton(game.get()));
+        } catch (Exception e) {
+            return new GameResponse(e.getMessage(), null);
         }
 
     }
 
-    public GameResponse getGenre(String genre){
+    public GameResponse getGenre(String genre) {
 
-        try{
+        try {
             Set<Game> gameSet = gameRepository.findByGenre(genre);
-            return new GameResponse("success",gameSet);
-        }
-        catch (Exception e){
-            return new GameResponse("not found",null);
+            return new GameResponse("success", gameSet);
+        } catch (Exception e) {
+            return new GameResponse("not found", null);
 
         }
     }
@@ -104,17 +102,21 @@ public class GameService {
                     user.getGames().add(optionalGame.get());
 
                     userRepository.save(user);
-                    return new GameResponse("success",user.getGames());
+                    return new GameResponse("success", user.getGames());
 
                 }
-                return new GameResponse("not found",null);
+                return new GameResponse("not found", null);
 
             }
-            return new GameResponse("not found",null);
-        }
-        catch (Exception e){
-            return new GameResponse("not found",null);
+            return new GameResponse("not found", null);
+        } catch (Exception e) {
+            return new GameResponse("not found", null);
 
         }
+    }
+
+    public List<Game> getAllGames() {
+        return gameRepository.findAll();
+
     }
 }
