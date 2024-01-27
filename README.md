@@ -22,7 +22,8 @@ Sample Postman Requests:
   ![getprofile](https://github.com/semihgunerr/GamingPlatform/assets/143366545/d86fe9c2-ad0f-4b4f-9355-633edc3a240c)
 
 - Edit User Profile:
-  ![getprofile](https://github.com/semihgunerr/GamingPlatform/assets/143366545/003a8179-fda5-4f0c-adef-acb27b46f577)
+  ![editprofile](https://github.com/semihgunerr/GamingPlatform/assets/143366545/ef1fac8e-3e2f-4ca8-9cc4-32630985b809)
+
 
 - Remove Existing User Profile:
   ![removeuser](https://github.com/semihgunerr/GamingPlatform/assets/143366545/483b37f1-7e27-4b79-841c-75b72262e05e)
