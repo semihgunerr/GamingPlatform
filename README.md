@@ -18,18 +18,23 @@ Sample Postman Requests:
 - User Login:
   ![userlogin](https://github.com/semihgunerr/GamingPlatform/assets/143366545/13d7cd41-5a5e-41c1-bd81-fd8050c21fc5)
 
+- User Invalid Credentials 3 times in a row:
+  ![userloginwrongattempt](https://github.com/semihgunerr/GamingPlatform/assets/143366545/fa39342d-75a7-429c-be81-e7432fc7a3cb)
+  
+-Create User:
+  ![CreateUser](https://github.com/semihgunerr/GamingPlatform/assets/143366545/f2177158-9471-4f74-a2cd-bb460314e71c)
+
 - Get User Profile:
   ![getprofile](https://github.com/semihgunerr/GamingPlatform/assets/143366545/d86fe9c2-ad0f-4b4f-9355-633edc3a240c)
 
 - Edit User Profile:
   ![editprofile](https://github.com/semihgunerr/GamingPlatform/assets/143366545/ef1fac8e-3e2f-4ca8-9cc4-32630985b809)
 
-
 - Remove Existing User Profile:
   ![removeuser](https://github.com/semihgunerr/GamingPlatform/assets/143366545/483b37f1-7e27-4b79-841c-75b72262e05e)
 
-- User Invalid Credentials 3 times in a row:
-  ![userloginwrongattempt](https://github.com/semihgunerr/GamingPlatform/assets/143366545/fa39342d-75a7-429c-be81-e7432fc7a3cb)
+- Get Existing Game Library:
+  ![getuserlibrary](https://github.com/semihgunerr/GamingPlatform/assets/143366545/2fde22bc-3beb-4488-8e7b-efd420c8e434)
 
 - Add New Game:
   ![addgame](https://github.com/semihgunerr/GamingPlatform/assets/143366545/eebfe235-33ce-43f6-a040-210c76728534)
@@ -37,11 +42,11 @@ Sample Postman Requests:
 - Remove Existing Game:
   ![deletegame](https://github.com/semihgunerr/GamingPlatform/assets/143366545/bc5e4caf-7e3c-438f-979a-41ad715efbf4)
 
+-List of Games:
+  ![GameList](https://github.com/semihgunerr/GamingPlatform/assets/143366545/6e4098b1-4991-49fc-9412-0e9fcf8df209)
+
 - Buy New Game:
   ![buygame](https://github.com/semihgunerr/GamingPlatform/assets/143366545/9afa82b6-e747-4838-a723-5ae8c44a9955)
-
-- Get Existing Game Library:
-  ![getuserlibrary](https://github.com/semihgunerr/GamingPlatform/assets/143366545/2fde22bc-3beb-4488-8e7b-efd420c8e434)
 
 - Get Game details:
   ![getGame](https://github.com/semihgunerr/GamingPlatform/assets/143366545/48457388-1836-4370-9cc7-7fd3aab1fae0)
